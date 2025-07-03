@@ -1,0 +1,112 @@
+.leaderboards-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.leaderboards-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.leaderboards-header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.back-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #545b62;
+}
+
+.leaderboards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.leaderboard-column {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-column h2 {
+    margin: 0 0 1.5rem 0;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.player-rank {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    transition: transform 0.2s;
+}
+
+.player-rank:hover {
+    transform: translateX(5px);
+}
+
+.rank {
+    width: 40px;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+.rank.top-3 {
+    color: #f1c40f;
+}
+
+.username {
+    flex: 1;
+    margin: 0 1rem;
+    color: #2c3e50;
+}
+
+.elo {
+    font-weight: bold;
+    color: #2ecc71;
+}
+
+.leaderboards-loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .leaderboards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leaderboards-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

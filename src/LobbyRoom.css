@@ -1,0 +1,668 @@
+.lobby-room-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #333;
+    min-height: 100vh;
+}
+
+.lobby-room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leave-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.leave-button:hover {
+    background-color: #c82333;
+}
+
+.lobby-info {
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 2rem;
+}
+
+.lobby-info h1 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.lobby-info p {
+    margin: 0 0 1rem 0;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.lobby-status {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-indicator {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-indicator.waiting {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-indicator.playing {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.private-indicator {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.start-game-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.start-game-button:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.start-game-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.lobby-room-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Players Section */
+.players-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.join-player-button {
+    padding: 0.5rem 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+.join-player-button:hover {
+    background-color: #218838;
+}
+
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.player-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    transition: border-color 0.3s;
+}
+
+.player-card.empty {
+    border-style: dashed;
+    opacity: 0.6;
+}
+
+.player-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #4285f4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.player-avatar.empty {
+    background-color: #ced4da;
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+
+.player-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.player-name {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.host-badge {
+    font-size: 0.7rem;
+    background-color: #ffc107;
+    color: #856404;
+    padding: 0.125rem 0.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.kick-button {
+    padding: 0.25rem 0.75rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.kick-button.small {
+    padding: 0.125rem 0.5rem;
+    font-size: 0.7rem;
+}
+
+.kick-button:hover {
+    background-color: #c82333;
+}
+
+/* Spectators Section */
+.spectators-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+.spectate-button {
+    padding: 0.5rem 1rem;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+.spectate-button:hover {
+    background-color: #545b62;
+}
+
+.spectators-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.no-spectators {
+    color: #6c757d;
+    font-style: italic;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.spectator-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.spectator-avatar {
+    width: 35px;
+    height: 35px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.spectator-name {
+    flex-grow: 1;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Chat Section */
+.chat-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 600px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.no-messages {
+    color: #6c757d;
+    font-style: italic;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.chat-message {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.message-author {
+    font-weight: 600;
+    color: #4285f4;
+    margin-right: 0.5rem;
+}
+
+.message-text {
+    color: #2c3e50;
+}
+
+.chat-input {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: #4285f4;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.send-button {
+    padding: 0.75rem 1.25rem;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover:not(:disabled) {
+    background-color: #3367d6;
+}
+
+.send-button:disabled {
+    background-color: #ced4da;
+    cursor: not-allowed;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.close-button:hover {
+    background-color: #f8f9fa;
+    color: #e74c3c;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-body p {
+    margin: 0;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.cancel-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #545b62;
+}
+
+.kick-confirm-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.kick-confirm-button:hover {
+    background-color: #c82333;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #6c757d;
+    padding: 3rem 0;
+}
+
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #dc3545;
+    padding: 3rem 0;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .lobby-room-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .chat-section {
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .lobby-room-container {
+        padding: 1rem;
+    }
+
+    .lobby-room-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .lobby-info {
+        margin: 0;
+    }
+
+    .lobby-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .player-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .player-name {
+        justify-content: center;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+
+    .section-header h2 {
+        text-align: center;
+    }
+
+    .spectator-item {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    .chat-input {
+        flex-direction: column;
+    }
+
+    .chat-input input {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lobby-room-header {
+        padding: 1rem;
+    }
+
+    .players-section,
+    .spectators-section,
+    .chat-section {
+        padding: 1rem;
+    }
+
+    .start-game-button,
+    .leave-button {
+        font-size: 0.9rem;
+        padding: 0.625rem 1.25rem;
+    }
+
+    .lobby-info h1 {
+        font-size: 1.25rem;
+    }
+
+    .lobby-info p {
+        font-size: 1rem;
+    }
+}
+
+.player-avatar img,
+.spectator-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}
+
+.section-header h2 {
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.spectate-button {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Style for current players display */
+.current-players {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.players-label {
+    font-weight: 600;
+}
+
+.players-names {
+    color: #333;
+}
