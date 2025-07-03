@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+
+# Build folders
+build/
+dist/
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.log
